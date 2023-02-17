@@ -1,7 +1,6 @@
-import os
-print(os.getcwd())
+import sys
 from openpyxl import load_workbook
 
-excel_file_path = 'D:/demo/data.xlsx'
+excel_file_path = sys.argv[1]
 
-workbook = load_workbook(filename='D:/demo/data.xlsx')
+workbook = load_workbook(filename=excel_file_path)
