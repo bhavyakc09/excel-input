@@ -25,7 +25,7 @@ jobs:
           pip3 install pandas
       
       - name: Read Excel data
-        run: python read_excel.py D:\demo
+        run: python read_excel.py D:\demo\data.xlsx
           input_file=${{ github.event.inputs.excel_file }}
           python3 read_excel.py $input_file
       
