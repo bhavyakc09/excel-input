@@ -1,3 +1,4 @@
+import os
 import sys
 from openpyxl import load_workbook
 
@@ -7,7 +8,7 @@ if len(sys.argv) < 2:
 
 excel_file_path = sys.argv[1]
 
-workbook = load_workbook(filename=D:\\demo\\data.xlsx)
+workbook = load_workbook(filename=os.environ['D:\\demo\\data.xlsx'])
 worksheet = workbook.active
 
 for row in worksheet.iter_rows(min_row=2, values_only=True):
