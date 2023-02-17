@@ -23,4 +23,4 @@ jobs:
         run: pip install openpyxl
 
       - name: Read Excel data
-        run: python my_script.py ${{ github.event.inputs.excel_path }}
+        run: python read_excel.py ${{ github.event.inputs.excel_path }}
