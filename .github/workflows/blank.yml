@@ -23,3 +23,5 @@ jobs:
       run: python sample.py ${{ secrets.EXCEL_FILE_PATH }}
       env:
         EXCEL_FILE_PATH: ${{ secrets.EXCEL_FILE_PATH }}
+    - name: Set output
+      run: echo "::set-output name={name}::{value}"
