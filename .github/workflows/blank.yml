@@ -21,5 +21,3 @@ jobs:
       run: pip install openpyxl
     - name: Read Excel file
       run: python sample.py ${{ secrets.EXCEL_FILE_PATH }}
-      env:
-        EXCEL_FILE_PATH: ${{ secrets.EXCEL_FILE_PATH }}
