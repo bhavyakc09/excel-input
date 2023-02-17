@@ -1,9 +1,17 @@
 import sys
-import pandas as pd
+from openpyxl import load_workbook
 
-# Read data from Excel file
-input_file = sys.argv[1]
-data = pd.read_excel(input_file)
+if len(sys.argv) < 2:
+    print("Please provide the path to the Excel file as a command line argument.")
+    sys.exit(1)
 
-# Do something with the data, such as print it to the console
-print(data)
+excel_file_path = sys.argv[1]
+
+workbook = load_workbook(filename=excel_file_path)
+worksheet = workbook.active
+
+for row in worksheet.iter_rows(min_row=2, values_only=True):
+    # Do something with the data in each row
+    print(row)
+
+workbook.close()
