@@ -20,6 +20,6 @@ jobs:
     - name: Install dependencies
       run: pip install openpyxl
     - name: Read Excel file
-      run: python read_excel.py ${{ secrets.EXCEL_FILE_PATH }}
+      run: python sample.py ${{ secrets.D:\\demo\\data.xlsx }}
       env:
-        EXCEL_FILE_PATH: ${{ secrets.EXCEL_FILE_PATH }}
+        EXCEL_FILE_PATH: ${{ secrets.D:\\demo\\data.xlsx }}
