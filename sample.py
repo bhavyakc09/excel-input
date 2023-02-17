@@ -1,3 +1,5 @@
+print(os.getcwd())
+
 import os
 from openpyxl import load_workbook
 
