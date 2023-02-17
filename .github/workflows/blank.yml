@@ -1,9 +1,9 @@
-name: Read Excel data
+name: read-excel
 
 on:
   workflow_dispatch:
     inputs:
-      excel_path:
+      excel_file_path:
         description: 'Path to Excel file'
         required: true
 
@@ -11,16 +11,21 @@ jobs:
   read_excel:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.x
-
-      - name: Install openpyxl
-        run: pip install openpyxl
-
-      - name: Read Excel data
-        run: python read_excel.py ${{ github.event.inputs.excel_path }}
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install openpyxl
+    - name: Read Excel file
+      env:
+        EXCEL_FILE_PATH: ${{ github.event.inputs.excel_file_path }}
+      run: |
+        python read_excel.py "${{ env.EXCEL_FILE_PATH }}"
+      id: read_excel_output
+    - name: Set output
+      run: echo "::set-output name=my_output::${{ steps.read_excel_output.outputs.result }}"
