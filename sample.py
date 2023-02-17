@@ -1,6 +1,15 @@
-import sys
 from openpyxl import load_workbook
 
-excel_file_path = sys.argv[1]
+# Load the workbook
+workbook = load_workbook(filename='D:/demo/data.xlsx')
 
-workbook = load_workbook(filename='data.xlsx')
+# Select the worksheet
+worksheet = workbook.active
+
+# Access cells in the worksheet
+cell_value = worksheet['A1'].value
+print(cell_value)
+
+# Access rows in the worksheet
+for row in worksheet.iter_rows(min_row=2, values_only=True):
+    print(row)
