@@ -33,3 +33,9 @@ jobs:
         run: |
           # Use the data in your workflow as needed
           # For example, pass it as an argument to a command
+          
+      - name: Read input data
+        run: |
+         input_data_path=${{ github.event.client_payload.input_data }}
+         python read_data.py $input_data_path
+          # Access the input data [input data is path to excel file]
