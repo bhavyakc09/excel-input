@@ -1,41 +1,26 @@
-name: CI
+name: Read Excel data
 
 on:
   workflow_dispatch:
     inputs:
-      excel_file:
-        description: Path to Excel file
+      excel_path:
+        description: 'Path to Excel file'
         required: true
-   
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  
-jobs:
-  read-excel-data:
-    runs-on: ubuntu-latest
 
+jobs:
+  read_excel:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Install dependencies
-        run: |
-          sudo apt-get install python3-pip
-          pip3 install pandas
-      
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install openpyxl
+        run: pip install openpyxl
+
       - name: Read Excel data
-        run: python read_excel.py D:\demo\data.xlsx
-          input_file=${{ github.event.inputs.excel_file }}
-          python3 read_excel.py $input_file
-      
-      - name: Do something with the data
-        run: |
-          # Use the data in your workflow as needed
-          # For example, pass it as an argument to a command
-          
-      - name: Read input data
-        run: |
-         input_data_path=${{ github.event.client_payload.input_data }}
-         python read_data.py $input_data_path
-          # Access the input data [input data is path to excel file]
+        run: python my_script.py ${{ github.event.inputs.excel_path }}
