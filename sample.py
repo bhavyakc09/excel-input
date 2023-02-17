@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 
 # Load the workbook
-workbook = load_workbook(filename='D:/demo/data.xlsx')
+workbook = load_workbook(filename='Downloads/data.xlsx')
 
 # Select the worksheet
 worksheet = workbook.active
