@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 
-# Load the workbook using an absolute path
-workbook = load_workbook(filename='C:/Users/Username/Downloads/data.xlsx')
+# Load the workbook using a relative path
+workbook = load_workbook(filename='data/data.xlsx')
 
 # Select the worksheet
 worksheet = workbook.active
